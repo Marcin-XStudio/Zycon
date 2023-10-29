@@ -1,0 +1,16 @@
+{
+  "Home": {
+    "title": "Accueil"
+  },
+  "auth": {
+    "Login": {
+      "title": "Connection"
+    }
+  },
+  "Countries": {
+    "en-country": "Angleterre",
+    "en-lang": "Anglais",
+    "fr-country": "France",
+    "fr-lang": "Français"
+  }
+}

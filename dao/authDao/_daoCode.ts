@@ -1,0 +1,1 @@
+export const DAO_CODE =  "AUTH_AUTH";
