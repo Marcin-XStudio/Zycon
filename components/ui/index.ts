@@ -1,2 +1,3 @@
 export * from "./Button";
-export * from "./textInput";
+export * from "./TextInput";
+export * from "./CrispChat";
