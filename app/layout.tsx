@@ -3,6 +3,7 @@
 import {ReactNode} from "react";
 import "/styles/globals.css"; // Assurez-vous d'avoir un fichier CSS global dans ce chemin si vous voulez utiliser des styles globaux.
 import {Inter} from "next/font/google";
+import {CrispChat} from "@/components/ui";
 
 
 const inter = Inter({
@@ -23,6 +24,7 @@ function RootLayout({
 
 	return (
 		<html className={`${inter.className}`}>
+			<CrispChat/>
 			<body>{children}</body>
 		</html>
 	);
