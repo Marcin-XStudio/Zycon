@@ -25,7 +25,11 @@ function RootLayout({
 	return (
 		<html className={`${inter.className}`}>
 			<CrispChat/>
-			<body>{children}</body>
+			<body 
+				suppressHydrationWarning={true}
+			>
+				{children}
+			</body>
 		</html>
 	);
 }
