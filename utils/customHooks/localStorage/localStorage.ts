@@ -3,7 +3,7 @@ export function clear() {
 }
 
 export function getItem(key: string) {
-	localStorage.getItem(key);
+	return localStorage.getItem(key);
 }
 
 export function key(index: number) {
