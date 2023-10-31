@@ -20,8 +20,8 @@ module.exports = withSentryConfig(
 
 		// Suppresses source map uploading logs during build
 		silent: true,
-		org: "x-studio-ti",
-		project: "javascript-nextjs",
+		org: "zycon-ti",
+		project: "zycon",
 	},
 	{
 		// For all available options, see:
