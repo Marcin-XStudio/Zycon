@@ -25,6 +25,8 @@ function RootLayout({
 		
 	useEffect(() => {
 		Hotjar.init(3721150, 6);
+		console.log("Hotjar initialized");
+		
 	}, []);
 		
 	return (

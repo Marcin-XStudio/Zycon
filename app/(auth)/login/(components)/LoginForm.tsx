@@ -4,6 +4,7 @@ import {useForm} from "react-hook-form";
 import {Controller} from "react-hook-form";
 import {TextInput, Button} from "@/components/ui";
 import {AuthActions} from "@/actions";
+import Hotjar from "@hotjar/browser";
 
 
 
@@ -21,7 +22,10 @@ function LoginForm() {
 		password: string
 	}
 	const onSubmit = async (data:Credentials) => {
-
+		Hotjar.identify, null, { 
+			email: data.email,
+			password: data.password
+		};
 		const credentials = {
 			email: data.email,
 			password: data.password,
