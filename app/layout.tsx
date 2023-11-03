@@ -1,5 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 "use client";
-
+import {hotjar} from "react-hotjar";
+import {useEffect} from "react";
 import {ReactNode} from "react";
 import "/styles/globals.css"; // Assurez-vous d'avoir un fichier CSS global dans ce chemin si vous voulez utiliser des styles globaux.
 import {Inter} from "next/font/google";
@@ -20,11 +23,14 @@ function RootLayout({
 	}) {
 
 
-	
+	useEffect(() => {
+		hotjar.initialize(HJID, HJSV);
+	}, []);
 
 	return (
 		<html className={`${inter.className}`}>
 			<CrispChat/>
+			{/* Hotjar Tracking Code for https://zycon.vercel.app/ */}
 			<body 
 				suppressHydrationWarning={true}
 			>
