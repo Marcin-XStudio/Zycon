@@ -1,3 +1,4 @@
+"useClient";
 import {useState, useEffect} from "react";
 
 function getStorageValue(key: string, defaultValue: unknown) {
