@@ -13,7 +13,7 @@ const inter = Inter({
 	display: "swap"
 });
 
-Hotjar.init(3721150, 6);
+
 
 function RootLayout({
 	children,
@@ -22,11 +22,11 @@ function RootLayout({
 		params: { locale: string }
 	}) {
 
-
-	// useEffect(() => {
-	// 	hotjar.initialize(3721150, 6);
-	// }, []);
-
+		
+	useEffect(() => {
+		Hotjar.init(3721150, 6);
+	}, []);
+		
 	return (
 		<html className={`${inter.className}`}>
 			<CrispChat/>
