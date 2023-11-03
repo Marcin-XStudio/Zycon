@@ -24,15 +24,16 @@ function RootLayout({
 
 		
 	useEffect(() => {
-		Hotjar.init(3721150, 6);
-		console.log("Hotjar initialized");
+		Hotjar.init(3721150, 6, {
+			debug: true
+		});
+		console.log("Hotjar initialized", Hotjar.isReady);
 		
 	}, []);
 		
 	return (
 		<html className={`${inter.className}`}>
 			<CrispChat/>
-			{/* Hotjar Tracking Code for https://zycon.vercel.app/ */}
 			<body 
 				suppressHydrationWarning={true}
 			>
