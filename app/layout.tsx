@@ -24,7 +24,7 @@ function RootLayout({
 
 
 	useEffect(() => {
-		hotjar.initialize(HJID, HJSV);
+		hotjar.initialize(3721150, 6);
 	}, []);
 
 	return (
