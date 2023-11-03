@@ -22,8 +22,6 @@ function LoginForm() {
 	}
 	const onSubmit = async (data:Credentials) => {
 
-		console.log("data", data);
-		
 		const credentials = {
 			email: data.email,
 			password: data.password,

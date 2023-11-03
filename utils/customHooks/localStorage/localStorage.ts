@@ -1,19 +1,23 @@
-// export function clear() {
-// 	localStorage.clear();
-// }
+import {useState, useEffect} from "react";
 
-// export function getItem(key: string) {
-// 	return localStorage.getItem(key);
-// }
+function getStorageValue(key: string, defaultValue: unknown) {
+	// getting stored value
+	if (typeof window !== "undefined") {
+		const saved = localStorage.getItem(key);
+		const initial = saved !== null ? JSON.parse(saved) : defaultValue;
+		return initial;
+	}
+}
 
-// export function key(index: number) {
-// 	return localStorage.key(index);
-// }
+export const useLocalStorage = (key: string, defaultValue: unknown) => {
+	const [value, setValue] = useState(() => {
+		return getStorageValue(key, defaultValue);
+	});
 
-// export function removeItem(key: string) {
-// 	localStorage.removeItem(key);
-// }
+	useEffect(() => {
+		// storing input name
+		localStorage.setItem(key, JSON.stringify(value));
+	}, [key, value]);
 
-// export function setItem(key: string, value: string) {
-// 	localStorage.setItem(key, value);
-// }
+	return [value, setValue];
+};
