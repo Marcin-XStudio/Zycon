@@ -5,7 +5,7 @@ import {Controller} from "react-hook-form";
 import {TextInput, Button} from "@/components/ui";
 import {AuthActions} from "@/actions";
 import Hotjar from "@hotjar/browser";
-
+import {redirect} from "next/navigation";
 
 
 function LoginForm() {
@@ -22,6 +22,7 @@ function LoginForm() {
 		password: string
 	}
 	const onSubmit = async (data:Credentials) => {
+	
 		Hotjar.identify, null, { 
 			email: data.email,
 			password: data.password
@@ -33,6 +34,10 @@ function LoginForm() {
 
 
 		const result = await AuthActions.loginUser(credentials);
+		
+		if (result.success) {
+			redirect("/coming-soon");
+		}
 
 		if (!result.success) {
 			console.log(result);

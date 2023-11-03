@@ -1,16 +1,16 @@
 import {ErrorModel} from "../../models";
-import {directus} from "@/api/directus";
+// import {directus} from "@/api/directus";
 import {DAO_CODE} from "./_daoCode";
 const FUNCTION_CODE = "GET_USER_TOKEN";
 
 export async function loginUser(payload: { email: string; password: string }) {
 	try {
-
-		const result = await directus.login(payload.email, payload.password);
-
-		console.log("result", result);
+		console.log("payload", payload);
 		
-		return result;
+		// const result = await directus.login(payload.email, payload.password);
+
+		
+		return {success: true, data: []};
 	}
 	catch (error: unknown | ErrorModel.Error) {
 		if (typeof error !== typeof ErrorModel.ErrorSchema) {
