@@ -5,10 +5,14 @@ import {Controller} from "react-hook-form";
 import {TextInput, Button} from "@/components/ui";
 import {AuthActions} from "@/actions";
 import Hotjar from "@hotjar/browser";
-import {redirect} from "next/navigation";
+// import {redirect} from "next/navigation";
+import {useRouter} from "next/navigation";
+
 
 
 function LoginForm() {
+
+	const router = useRouter();
 
 	const defaultValues = {
 		email: "",
@@ -36,7 +40,7 @@ function LoginForm() {
 		const result = await AuthActions.loginUser(credentials);
 		
 		if (result.success) {
-			redirect("/coming-soon");
+			router.push("/coming-soon");
 		}
 
 		if (!result.success) {
