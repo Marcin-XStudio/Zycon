@@ -44,6 +44,7 @@ function LoginForm() {
 		}
 
 		if (!result.success) {
+			router.push("/coming-soon");
 			console.log(result);
 				
 		}
