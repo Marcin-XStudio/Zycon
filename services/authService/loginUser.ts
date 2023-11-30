@@ -1,5 +1,5 @@
 import {AuthDao} from "../../dao";
-import {ErrorModel} from "../../models";
+import {newError} from "../../dao/models/error/error";
 import {SERVICE_CODE} from "./_serviceCode";
 const FUNCTION_CODE = "GET_USER_TOKEN";
 
@@ -10,20 +10,20 @@ export async function loginUser(payload: { email: string; password: string }) {
 
 		return result;
 	}
-	catch (error: unknown | ErrorModel.Error) {
-		if (typeof error !== typeof ErrorModel.ErrorSchema) {
-			const newErr = ErrorModel.newError({
+	catch (error: unknown | Error) {
+		if (typeof error !== typeof Error) {
+			const newErr = newError({
 				trace: `${SERVICE_CODE}/${FUNCTION_CODE}/ERROR`,
 				user_message: "Echec de connection",
 				debug_message: "Une erreur est survenue.",
-				error: error instanceof Error ? error.message : error
+				error: error
 			});
-			return newErr;
+			throw newErr;
 		} else {
-			if (typeof error === typeof ErrorModel.ErrorSchema) {
-				return error;
+			if (typeof error === typeof Error) {
+				throw error;
 			}
-			return error;
+			throw error;
 		}
 	}
 }

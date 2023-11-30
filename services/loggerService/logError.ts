@@ -1,6 +1,6 @@
-import {ErrorModel} from '../../models';
-import {SERVICE_CODE} from './_serviceCode';
-const FUNCTION_CODE = 'LOG_ERROR';
+import {newError} from "../../dao/models";
+import {SERVICE_CODE} from "./_serviceCode";
+const FUNCTION_CODE = "LOG_ERROR";
 
 /**
  * logError
@@ -9,14 +9,14 @@ const FUNCTION_CODE = 'LOG_ERROR';
  * @author titouan@x-studio.fr
  */
 export async function logError(error: unknown) {
-    try {
-        console.error(error);
-    }
-    catch (error) {
-        console.error(ErrorModel.newError({
-            code: `${SERVICE_CODE}/${FUNCTION_CODE}/ERROR`,
-            message: 'Une erreur est survenue.',
-            error: error
-        }));
-    }
+	try {
+		console.error(error);
+	}
+	catch (error) {
+		console.error(newError({
+			code: `${SERVICE_CODE}/${FUNCTION_CODE}/ERROR`,
+			message: "Une erreur est survenue.",
+			error: error
+		}));
+	}
 }

@@ -1,1 +1,1 @@
-export const DAO_CODE =  "AUTH_AUTH";
+export const DAO_CODE =  "AUTH_DAO";

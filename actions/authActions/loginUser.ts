@@ -1,41 +1,43 @@
-import {ErrorModel, ResultModel} from "../../models";
+// import {ResultModel} from "../../dao/models";
+import {handleError} from "@/utils/handleError";
 import {ACTION_CODE} from "./_actionCode";
-import {LoggerService, AuthService} from "../../services";
+import {LoggerService} from "@/services";
+import {AuthDao} from "@/dao/index";
+import {createCookie} from "@/lib/cookies";
+
 const FUNCTION_CODE = "LOG_IN";
+
+export interface CookieData {
+	[key: string]: number | string | null | undefined;
+	access_token?: string | null;
+	refresh_token?: string | null;
+    expires_at?: number | null;
+    expires?: number | null;
+}
+
 
 export async function loginUser(payload: { email: string; password: string }) {
 	
 	try {
-		LoggerService.logInfo("Action - logIn - Start");
-		// interface AuthentcateData {
-		// 	access_token: string,
-		// 	expires: number,
-		// 	refresh_token: string,
-		// }
-		const getUserToken = await AuthService.loginUser(payload);
+		LoggerService.logInfo("Action - loginUser - Start");
 
-		LoggerService.logInfo("Action - logIn - End - Success");
+		const getUserToken = await AuthDao.loginUser(payload) as CookieData;
 
-		return ResultModel.newSuccessResult(getUserToken);
+		if (getUserToken) {
+			await createCookie(getUserToken);
+		} 
+
+		LoggerService.logInfo("Action - loginUser - End - Success");
+		
+		return getUserToken;
 	}
 	
-	catch (error: unknown | ErrorModel.Error) {
-		LoggerService.logInfo("authenticateUser - Error");
-		if (typeof error !== typeof ErrorModel.ErrorSchema) {
-			const newErr = ErrorModel.newError({
-				trace: `${ACTION_CODE}/${FUNCTION_CODE}/ERROR`,
-				user_message: "Echec de connection",
-				debug_message: "Une erreur est survenue.",
-				error: error
-			});
-			LoggerService.logError(error);
-			return ResultModel.newErrorResult(newErr);
-		} else {
-			if (typeof error === typeof ErrorModel.ErrorSchema) {
-				(error as ErrorModel.Error).trace = (error as ErrorModel.Error).trace + ` => ${ACTION_CODE}/${FUNCTION_CODE}/ERROR`;
-			}
-			LoggerService.logError(error);
-			return ResultModel.newErrorResult(error); // fix type error here
-		}
+	catch (error: unknown | Error) {
+		handleError(
+			error, 
+			ACTION_CODE, 
+			FUNCTION_CODE,
+			"Echec de connexion",
+		);
 	}
 }

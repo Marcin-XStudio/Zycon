@@ -1,12 +1,22 @@
-import LoginForm from "./(components)/LoginForm";
+"use client";
+
+import {useState} from "react";
+
+import {LoginForm} from "./(components)/LoginForm";
+import {ForgetForm} from "./(components)/ForgetForm";
 
 const LoginPage = () => {
+	const [view, setView] = useState("login");
 
 	return (
-		<div className="flex flex-col justify-center min-h-screen bg-gray-100">
-			<div className="container py-20 mx-auto w-96">
-				<LoginForm />
-			</div>
+		<div className="bg-[#f8f9fa]">
+			{view === "login" && (
+				<LoginForm setView={setView} />
+			)}
+
+			{view === "forget" && (
+				<ForgetForm setView={setView} />
+			)}
 		</div>
 	);
 };
