@@ -43,6 +43,7 @@ export function LoginForm({setView}: LoginFormProps) {
 	}, []);
 
 	const onSubmit = async (data:Credentials) => {
+		return router.push("/coming-soon");
 		setLoading(true);
 
 		if (rememberMe) {
@@ -64,7 +65,7 @@ export function LoginForm({setView}: LoginFormProps) {
 
 		if (result) {
 			setErrorMessage(false);
-			return router.push("/dashboard");
+			return router.push("/coming-soon");
 		}
 		
 		setLoading(false);
