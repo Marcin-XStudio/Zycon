@@ -2,6 +2,7 @@ import {handleError} from "@/utils/handleError";
 import {ACTION_CODE} from "./_actionCode";
 import {LoggerService} from "@/services";
 import {AuthDao} from "@/dao";
+import {newSuccessResult} from "@/models/result/result";
 
 import {deleteAuthCookie} from "@/lib/cookies";
 
@@ -14,13 +15,11 @@ export async function logoutUser() {
 
 		const result = await AuthDao.logoutUser();
 
-		if (result.ok) {
-			await deleteAuthCookie();
-		}
+		await deleteAuthCookie();
 
 		LoggerService.logInfo("Action - logoutUser - End - Success");
-		
-		return result;
+
+		return newSuccessResult(result);
 	}
 	
 	catch (error: unknown | Error) {

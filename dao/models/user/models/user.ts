@@ -11,9 +11,9 @@ export const UserSchema = z.object({
 	last_name: z.string().optional(),
 	password: z.string().optional(),
 	email: z.string().optional(),
-	description: z.string().nullable(),
+	description: z.string().nullable().optional(),
 	tags: z.array(z.string()).optional(),
-	avatar: z.string().nullable(),
+	avatar: z.string().nullable().optional(),
 	status: z.string().optional(),
 	email_notifications: z.boolean().optional(),
 }).strict();

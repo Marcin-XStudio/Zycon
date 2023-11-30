@@ -16,7 +16,7 @@ export async function logoutUser() {
 			throw Error("No cookie or refresh token");
 		}
 
-		return await client.request(logout(cookie.refresh_token));
+		return await client.request(logout(cookie.refresh_token as string));
 	}
 	catch (error: unknown | Error) {		
 		handleError(
