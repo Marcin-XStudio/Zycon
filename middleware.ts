@@ -39,7 +39,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-	matcher: ["/coming-soon"],
+	matcher: ["/"],
 };
 
 // Make the update of the cookies available on the request
