@@ -9,7 +9,7 @@ import {TextInput} from "@/components/ui/TextInput";
 import {Button} from "@/components/ui/Button";
 import {Checkbox} from "@/components/ui/Checkbox";
 import {AuthActions} from "@/actions";
-import roundedLogo from "@/public/logos/rounded-logo.png";
+import roundedLogo from "@/public/zycon_logo.svg";
 
   interface Credentials {
 	first_name: string,
