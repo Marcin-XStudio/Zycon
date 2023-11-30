@@ -10,14 +10,22 @@ const config = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ["var(--font-inter)"]
+				sans: ["var(--font-bulo)"]
 			},
 			colors: {
-				primary: "#3498db",
-				"primary-pressed": "#2980b9",
-				secondary: "#e74c3c",
-				"primary-text": "#1A202C"
-			},
+				"Green": "#71b8b5",
+				"Blue": "#272c56",
+				"Red": "#e65547",
+				"Black": "#242b35",
+				"Dark-grey": "#8A909A",
+				"Light-grey": "#f8f9fa",
+				"Medium-grey": "#D9D9D9",
+				"Grey": "#C4CDD5",
+				"Light-green": "#4DBAB5",
+				"Disabled-bg-grey": "#EDEEF2",
+				"Disabled-text-grey": "#9EA2B3",
+				"Dark-blue": "#242C58"
+			}
 		}
 	},
 	plugins: [
